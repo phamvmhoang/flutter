@@ -28,21 +28,18 @@ class RandomWordsState extends State<RandomWords> {
   @override
   Widget build(BuildContext context) {
 
-    return MaterialApp(
-      title: 'Startup Name Generator',
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('Startup Name Generator'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Startup Name Generator'),
 //          backgroundColor: Colors.white,
-          actions: <Widget>[
-            IconButton(
-              icon: Icon(Icons.list) ,
-              onPressed: _pushSaved,
-            ),
-          ],
-        ),
-        body: _buildSuggestions(),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.list) ,
+            onPressed: _pushSaved,
+          ),
+        ],
       ),
+      body: _buildSuggestions(),
     );
     //return _buildSuggestions();
   }

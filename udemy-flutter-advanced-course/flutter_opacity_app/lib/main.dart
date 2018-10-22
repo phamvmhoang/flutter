@@ -16,12 +16,16 @@ class _State extends State<MyApp> {
   bool _visible;
   int _turn;
   double _value;
+  double _x, _y, _z;
 
   @override
   void initState() {
     _visible = true;
     _turn = 0;
     _value = 0.0;
+    _x = 0.0;
+    _y = 0.0;
+    _z = 0.0;
   }
 
   void _toggleVisible(){
@@ -66,7 +70,7 @@ class _State extends State<MyApp> {
                 quarterTurns: _turn,
                 child: Text('FLutter Rote Rox...',
                   style: TextStyle(
-                    fontSize: 28.0,
+                    fontSize: 24.0,
                     color: Colors.red
                   ),
                 ),
@@ -88,7 +92,45 @@ class _State extends State<MyApp> {
                   )
                 ),
                 child: Image.asset('images/smile.png')
-              )
+              ),
+              Container(
+                child: Column(
+                  children: <Widget>[
+                    Row(
+                      children: <Widget>[
+                        Text('X'),
+                        Slider(value: _x, onChanged: (double value) => setState( ()=> _x = value))
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text('Y'),
+                        Slider(value: _y, onChanged: (double value) => setState( ()=> _y = value))
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Text('Z'),
+                        Slider(value: _z, onChanged: (double value) => setState( ()=> _z = value))
+                      ],
+                    ),
+                    Transform(
+                      transform: Matrix4.skewY(_y),
+                      child: Transform(
+                        transform: Matrix4.skewX(_x),
+                        child: Transform(
+                          transform: Matrix4.rotationZ(_z),
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text('Hello World'),
+                          )
+                        )
+                      ),
+
+                    )
+                  ],
+                ),
+              ),
             ],
           ),
         ),

@@ -14,15 +14,26 @@ class MyApp extends StatefulWidget {
 class _State extends State<MyApp> {
 
   bool _visible;
+  int _turn;
+  double _value;
 
   @override
   void initState() {
     _visible = true;
+    _turn = 0;
+    _value = 0.0;
   }
 
   void _toggleVisible(){
     setState(() {
       _visible = !_visible;
+    });
+  }
+
+  void _onChangehandler(double value){
+    setState(() {
+      _value = value;
+      _turn = value.toInt();
     });
   }
 
@@ -44,7 +55,23 @@ class _State extends State<MyApp> {
               RaisedButton(
                 onPressed: _toggleVisible,
                 child: Text('Toggle Visible'),
+              ),
+              Slider(
+                  value: _value,
+                  min: 0.0,
+                  max: 4.0,
+                  onChanged: _onChangehandler
+              ),
+              RotatedBox(
+                quarterTurns: _turn,
+                child: Text('FLutter Rote Rox...',
+                  style: TextStyle(
+                    fontSize: 28.0,
+                    color: Colors.red
+                  ),
+                ),
               )
+              
             ],
           ),
         ),

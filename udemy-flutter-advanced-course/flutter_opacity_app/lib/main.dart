@@ -70,8 +70,25 @@ class _State extends State<MyApp> {
                     color: Colors.red
                   ),
                 ),
+              ),
+              Text('Sun Shine'),
+              Container(
+                margin: EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(32.0),
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.orange,
+                    width: 2.0,
+                  ),
+                  gradient: RadialGradient(
+                      colors: <Color>[
+                        Colors.red,
+                        Colors.yellow
+                      ]
+                  )
+                ),
+                child: Image.asset('images/smile.png')
               )
-              
             ],
           ),
         ),

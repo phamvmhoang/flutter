@@ -54,7 +54,7 @@ class _State extends State<MyApp> with SingleTickerProviderStateMixin {
         width: animation.value,
         child:  Center(
           child: FlutterLogo(
-            size: 300.0,
+            size: 200.0,
           ),
         ),
       ),
